@@ -77,7 +77,14 @@ class BooksController extends Controller
             ]
         );
 
-        $libro->update($request->all());
+        $datos=$request->all();
+        
+        if($request->hasFile('imagen')){
+            $path=$request->file('imagen')->store('imagenes','public');
+            $datos['imagen']=$path;
+        }
+
+        $libro->update($datos);
 
         return redirect()->route('libros.index')->with('sucess','Libro editado con exito');
     }   

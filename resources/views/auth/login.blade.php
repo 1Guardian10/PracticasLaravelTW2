@@ -19,6 +19,14 @@
             <label for="password" class="block text-sm font-medium text-gray-700">contraseña</label>
             <input type="password" name="password" class="mt-1 w-full p-2 border border-gray-300 rounded focus:ring-blue-400" required>
         </div>
+        
+        @if ($errors->any())
+            <div>
+                @foreach ($errors->all() as $error)
+                    <p class="text-red-600">{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
 
         <div class="text-center">
             <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
